@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+    <com.applibgroup.diffre.DiffreViewApi1
+        ohos:id="$+id:fillShapeViewApi1"
+        ohos:height="match_parent"
+        ohos:width="match_parent"
+        ohos:layout_alignment="center"
+        ohos:top_margin="8vp"
+        ohos:left_margin="16vp"/>
+    <Slider
+        ohos:id="$+id:seekBar"
+        ohos:height="match_content"
+        ohos:width="match_parent"
+        ohos:align_parent_bottom="true"
+        ohos:padding="32vp"
+        ohos:progress="60"
+        />
+
+</DependentLayout>
