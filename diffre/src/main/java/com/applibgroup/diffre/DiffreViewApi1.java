@@ -40,15 +40,15 @@ public class DiffreViewApi1 extends DiffreView {
 		region.setRect(new Rect(0,0,(int)(width*percent),height));
 
 		// NOTE Below operations are not working as expected
-		progressRegion.setPath(progressStrokePath, region); // INTERSECT
+		boolean result = progressRegion.setPath(progressStrokePath, region); // INTERSECT
 		textRegion.setPath(textPath, region);
 
 		progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
 
 		croppedProgressPath.rewind();
 
-		boolean result = progressRegion.getBoundaryPath(croppedProgressPath);
-		HiLog.debug(logLabel, "progressRegion getBoundaryPath called. Was successful? %{public}s", result);
+		progressRegion.getBoundaryPath(croppedProgressPath);
+		HiLog.debug(logLabel, "progressRegion setPath called. Was successful? %{public}s", result);
 	}
 
 	@Override
