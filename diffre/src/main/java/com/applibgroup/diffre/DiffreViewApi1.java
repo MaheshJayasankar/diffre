@@ -41,13 +41,13 @@ public class DiffreViewApi1 extends DiffreView {
 
 		// NOTE Below operations are not working as expected
 		boolean result = progressRegion.setPath(progressStrokePath, region); // INTERSECT
-		textRegion.setPath(textPath, region);
 
+		textRegion.setPath(textPath, region);
 		progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
 
 		croppedProgressPath.rewind();
-
 		progressRegion.getBoundaryPath(croppedProgressPath);
+
 		HiLog.debug(logLabel, "progressRegion setPath called. Was successful? %{public}s", result);
 	}
 
@@ -60,6 +60,7 @@ public class DiffreViewApi1 extends DiffreView {
 
 		croppedTextPath.rewind();
 		boolean result = textRegion.getBoundaryPath(croppedTextPath);
+
 		HiLog.debug(logLabel, "textRegion getBoundaryPath called. Was successful? %{public}s", result);
 	}
 }

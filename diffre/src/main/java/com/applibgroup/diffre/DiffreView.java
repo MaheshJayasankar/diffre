@@ -69,9 +69,6 @@ public abstract class DiffreView extends Component implements Component.Estimate
 
 		radius = paintRadius;
 
-		paint.setAntiAlias(true);
-		paint.setTextAlign(TextAlignment.CENTER);
-
 		initPaint();
 
 		setEstimateSizeListener(this);
@@ -93,7 +90,9 @@ public abstract class DiffreView extends Component implements Component.Estimate
 
 	private void initPaint()
 	{
-		paint.setColor(new Color(COLOR_ORANGE));
+		paint.setAntiAlias(true);
+		paint.setTextAlign(TextAlignment.CENTER);
+
 		paint.setStrokeWidth(2f);
 	}
 
@@ -134,6 +133,7 @@ public abstract class DiffreView extends Component implements Component.Estimate
 
 		HiLog.debug(logLabel, "Draw Task Called at percent %{public}f.", percent);
 
+		paint.setColor(new Color(COLOR_ORANGE));
 		paint.setStyle(Paint.Style.STROKE_STYLE);
 		canvas.drawPath(progressStrokePath, paint);
 
