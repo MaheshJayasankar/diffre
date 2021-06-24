@@ -23,7 +23,14 @@ public class MainAbilitySlice extends AbilitySlice {
         // NOTE Implementation has not yet begun
         //diffreViewApi19 = (DiffreView) findComponentById(ResourceTable.Id_fillShapeViewApi19);
 
-        diffreViewApi1.setProgress(seekbar.getProgress());
+        if (diffreViewApi1 != null){
+            float progress;
+            if (seekbar != null)
+                progress = seekbar.getProgress();
+            else
+                progress = 60F;
+            diffreViewApi1.setProgress(progress / 100F);
+        }
         if (diffreViewApi19 != null){
             diffreViewApi19.setProgress(seekbar.getProgress() / 100F);
         }
