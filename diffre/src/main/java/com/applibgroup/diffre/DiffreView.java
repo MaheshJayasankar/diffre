@@ -1,13 +1,12 @@
 package com.applibgroup.diffre;
 
 
+import ohos.agp.components.AttrHelper;
 import ohos.agp.components.AttrSet;
 import ohos.agp.render.*;
 import ohos.agp.components.Component;
 import ohos.agp.utils.*;
 import ohos.app.Context;
-import ohos.hiviewdfx.HiLog;
-import ohos.hiviewdfx.HiLogLabel;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -25,25 +24,19 @@ public abstract class DiffreView extends Component implements Component.Estimate
 	Path progressStrokePath = new Path();
 
 	final Path textPath = new Path();
-	final Path fullTextPath = new Path();
 	final Path croppedProgressPath = new Path();
 	final Path croppedTextPath = new Path();
 
-	// Logging parameters
-	private static final int DOMAIN = 0x00101;
-	private static final String TAG = "DIFFRE";
-	protected static final HiLogLabel logLabel = new HiLogLabel(HiLog.LOG_APP, DOMAIN, TAG);
-
-
 	private static RectFloat rectF = new RectFloat();
 
-	// Temporary Constants, TODO remap to constants file
-	final int paintTextSize = 18;
-	final int paintTextPadding = 18;
-	final int paintRadius = 10;
-
-	private final int COLOR_ORANGE = 0xFFFD9727;
+	// Display parameters, TODO remap to constants file, or pass as parameters to constructor?
+	private final int paintTextSize = 18;
+	private final int paintTextPadding = 18;
+	private final int paintRadius = 10;
+	private static final int COLOR_ORANGE = 0xFFFD9727;
 	private final String textString = "16:00 – 16:30";
+	// Only above parameters are to be changed to alter display
+
 	private final Paint paint = new Paint();
 	private final float radius;
 	private final int textPadding;
@@ -62,12 +55,12 @@ public abstract class DiffreView extends Component implements Component.Estimate
 		super(context, attrs, defStyleId);
 
 
-		final int paintTextSize = this.paintTextSize;
-		paint.setTextSize(paintTextSize);
+		final int curPaintTextSize = AttrHelper.fp2px(paintTextSize, context);
+		paint.setTextSize(curPaintTextSize);
 
-		textPadding = paintTextPadding;
+		textPadding = AttrHelper.vp2px(paintTextPadding, context);
 
-		radius = paintRadius;
+		radius = AttrHelper.vp2px(paintRadius, context);
 
 		initPaint();
 
@@ -93,20 +86,15 @@ public abstract class DiffreView extends Component implements Component.Estimate
 		paint.setAntiAlias(true);
 		paint.setTextAlign(TextAlignment.CENTER);
 
-		paint.setStrokeWidth(2f);
+		paint.setStrokeWidth(4f);
 	}
 
 	@Override
 	public boolean onEstimateSize(int widthMeasureSpec, int heightMeasureSpec) {
 		textBounds.modify(paint.getTextBounds(textString));
 
-		float scale = 5f;
-
-		Matrix scaleMatrix = new Matrix();
-		scaleMatrix.setScale(scale, scale, textBounds.getCenterX(), textBounds.getCenterY());
-
-		final int textWidth = (int) (textBounds.getWidth() * scale);
-		final int textHeight = (int) (textBounds.getHeight() * scale);
+		final int textWidth = textBounds.getWidth();
+		final int textHeight = textBounds.getHeight();
 
 		width = textWidth + textPadding;
 		height = textHeight + textPadding;
@@ -115,8 +103,6 @@ public abstract class DiffreView extends Component implements Component.Estimate
 		final int cy = (height + textHeight) / 2;
 
 		paint.addTextToPath(textString, cx, cy, textPath);
-		paint.addTextToPath(textString, cx, cy, fullTextPath);
-		// textPath.transform(scaleMatrix);
 		progressStrokePath = getRoundRectPath(0, 0, width, height, radius);
 
 		computePaths();
@@ -124,17 +110,15 @@ public abstract class DiffreView extends Component implements Component.Estimate
 		// Adding 1 to prevent artifacts
 		setEstimatedSize(Component.EstimateSpec.getChildSizeWithMode(width+1, width+1, EstimateSpec.NOT_EXCEED),
 				Component.EstimateSpec.getChildSizeWithMode(height+1, height+1, EstimateSpec.NOT_EXCEED));
-		HiLog.debug(logLabel, "Estimate Size Called. Set measurements as %{public}d and %{public}d", width, height);
 		return true;
 	}
 
 	@Override
 	public void onDraw(Component component, Canvas canvas) {
 
-		HiLog.debug(logLabel, "Draw Task Called at percent %{public}f.", percent);
-
 		paint.setColor(new Color(COLOR_ORANGE));
 		paint.setStyle(Paint.Style.STROKE_STYLE);
+
 		canvas.drawPath(progressStrokePath, paint);
 
 		paint.setStyle(Paint.Style.FILL_STYLE);

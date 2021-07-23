@@ -3,6 +3,10 @@
     {
       "name": "app_name",
       "value": "Diffre"
+    },
+    {
+      "name": "api_1",
+      "value": "API 1+ (No anti-aliasing)"
     }
   ]
 }

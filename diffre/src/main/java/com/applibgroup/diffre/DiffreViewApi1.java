@@ -2,12 +2,9 @@ package com.applibgroup.diffre;
 
 
 import ohos.agp.components.AttrSet;
-import ohos.agp.render.Path;
 import ohos.agp.render.Region;
 import ohos.agp.utils.Rect;
-import ohos.agp.utils.RectFloat;
 import ohos.app.Context;
-import ohos.hiviewdfx.HiLog;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -36,31 +33,26 @@ public class DiffreViewApi1 extends DiffreView {
 
 	@Override
 	public void computeCroppedProgressPath() {
-
 		region.setRect(new Rect(0,0,(int)(width*percent),height));
 
 		// NOTE Below operations are not working as expected
-		boolean result = progressRegion.setPath(progressStrokePath, region); // INTERSECT
+		progressRegion.setPath(progressStrokePath, region); // INTERSECT
 		textRegion.setPath(textPath, region);
 
 		progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
 
 		croppedProgressPath.rewind();
 		progressRegion.getBoundaryPath(croppedProgressPath);
-
-		HiLog.debug(logLabel, "progressRegion setPath called. Was successful? %{public}s", result);
 	}
 
 	@Override
 	public void computeCroppedTextPath() {
-		region.setRect(new Rect(0,0, (int) (width * percent), height));
+		region.setRect(new Rect((int) (width * percent),0, width, height));
 
 		// NOTE Below operation is not working as expected
 		textRegion.setPath(textPath, region); // INTERSECT
 
 		croppedTextPath.rewind();
-		boolean result = textRegion.getBoundaryPath(croppedTextPath);
-
-		HiLog.debug(logLabel, "textRegion getBoundaryPath called. Was successful? %{public}s", result);
+		textRegion.getBoundaryPath(croppedTextPath);
 	}
 }

@@ -31,29 +31,32 @@ public class MainAbilitySlice extends AbilitySlice {
                 progress = 60F;
             diffreViewApi1.setProgress(progress / 100F);
         }
-        if (diffreViewApi19 != null){
+        if (diffreViewApi19 != null && seekbar != null){
             diffreViewApi19.setProgress(seekbar.getProgress() / 100F);
         }
-        seekbar.setValueChangedListener(new Slider.ValueChangedListener() {
-            @Override
-            public void onProgressUpdated(Slider seekBar, int progress, boolean fromUser) {
-                diffreViewApi1.setProgress(progress / 100F);
+        if (seekbar != null)
+        {
+            seekbar.setValueChangedListener(new Slider.ValueChangedListener() {
+                @Override
+                public void onProgressUpdated(Slider seekBar, int progress, boolean fromUser) {
+                    diffreViewApi1.setProgress(progress / 100F);
 
-                if (diffreViewApi19 != null) {
-                    diffreViewApi19.setProgress(progress / 100F);
+                    if (diffreViewApi19 != null) {
+                        diffreViewApi19.setProgress(progress / 100F);
+                    }
                 }
-            }
 
-            @Override
-            public void onTouchStart(Slider seekBar) {
+                @Override
+                public void onTouchStart(Slider seekBar) {
 
-            }
+                }
 
-            @Override
-            public void onTouchEnd(Slider seekBar) {
+                @Override
+                public void onTouchEnd(Slider seekBar) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
     @Override
