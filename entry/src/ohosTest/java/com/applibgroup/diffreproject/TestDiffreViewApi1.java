@@ -2,7 +2,6 @@ package com.applibgroup.diffreproject;
 
 import com.applibgroup.diffre.DiffreView;
 import com.applibgroup.diffre.DiffreViewApi1;
-import com.applibgroup.diffre.ResourceTable;
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
 import ohos.agp.components.Attr;
 import ohos.agp.components.AttrSet;

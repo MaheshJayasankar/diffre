@@ -9,50 +9,51 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Works with any background. No anti-aliasing for this approach.
- * <p>
- * Heavily inspired from Romain Guy's Medium article on "How to underline text":
+ * <p>Heavily inspired from Romain Guy's Medium article on "How to underline text":
  * https://medium.com/google-developers/a-better-underline-for-android-90ba3a2e4fb#.hnv0zcm2h
- * <p>
+ * </p>
  * Created by rakshakhegde on 16/02/17.
  */
 public class DiffreViewApi1 extends DiffreView {
 
-	final Region textRegion = new Region();
-	final Region progressRegion = new Region();
-	final Region region = new Region();
+    final Region textRegion = new Region();
+    final Region progressRegion = new Region();
+    final Region region = new Region();
 
-	public DiffreViewApi1(Context context) {
-		this(context, null);
-	}
-	public DiffreViewApi1(Context context, @Nullable AttrSet attrs) {
-		this(context, attrs, 0);
-	}
-	public DiffreViewApi1(Context context, @Nullable AttrSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-	}
+    public DiffreViewApi1(Context context) {
+        this(context, null);
+    }
 
-	@Override
-	public void computeCroppedProgressPath() {
-		region.setRect(new Rect(0,0,(int)(width*percent),height));
+    public DiffreViewApi1(Context context, @Nullable AttrSet attrs) {
+        this(context, attrs, 0);
+    }
 
-		// NOTE Below operations are not working as expected
-		progressRegion.setPath(progressStrokePath, region); // INTERSECT
-		textRegion.setPath(textPath, region);
+    public DiffreViewApi1(Context context, @Nullable AttrSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
 
-		progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
+    @Override
+    public void computeCroppedProgressPath() {
+        region.setRect(new Rect(0, 0, (int) (width * percent), height));
 
-		croppedProgressPath.rewind();
-		progressRegion.getBoundaryPath(croppedProgressPath);
-	}
+        // NOTE Below operations are not working as expected
+        progressRegion.setPath(progressStrokePath, region); // INTERSECT
+        textRegion.setPath(textPath, region);
 
-	@Override
-	public void computeCroppedTextPath() {
-		region.setRect(new Rect((int) (width * percent),0, width, height));
+        progressRegion.op(textRegion, Region.Op.DIFFERENCE); // DIFFERENCE
 
-		// NOTE Below operation is not working as expected
-		textRegion.setPath(textPath, region); // INTERSECT
+        croppedProgressPath.rewind();
+        progressRegion.getBoundaryPath(croppedProgressPath);
+    }
 
-		croppedTextPath.rewind();
-		textRegion.getBoundaryPath(croppedTextPath);
-	}
+    @Override
+    public void computeCroppedTextPath() {
+        region.setRect(new Rect((int) (width * percent), 0, width, height));
+
+        // NOTE Below operation is not working as expected
+        textRegion.setPath(textPath, region); // INTERSECT
+
+        croppedTextPath.rewind();
+        textRegion.getBoundaryPath(croppedTextPath);
+    }
 }
