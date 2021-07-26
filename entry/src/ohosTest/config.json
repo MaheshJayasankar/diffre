@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "com.applibgroup.diffreproject",
-    "vendor": "applibgroup",
+    "bundleName": "io.github.rakshakhegde.diffre",
+    "vendor": "github",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.applibgroup.diffreproject",
+    "package": "io.github.rakshakhegde.diffre",
     "name": "testModule",
     "deviceType": [
       "phone"

@@ -1,7 +1,7 @@
-package com.applibgroup.diffreproject;
+package io.github.rakshakhegde.diffre;
 
-import com.applibgroup.diffre.DiffreView;
-import com.applibgroup.diffre.DiffreViewApi1;
+import io.github.rakshakhegde.diffre.DiffreView;
+import io.github.rakshakhegde.diffre.DiffreViewApi1;
 import ohos.aafwk.ability.delegation.AbilityDelegatorRegistry;
 import ohos.agp.components.Attr;
 import ohos.agp.components.AttrSet;

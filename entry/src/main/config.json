@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "com.applibgroup.diffreproject",
-    "vendor": "applibgroup",
+    "bundleName": "io.github.rakshakhegde.diffre",
+    "vendor": "github",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.applibgroup.diffreproject",
+    "package": "io.github.rakshakhegde.diffre",
     "name": ".MyApplication",
     "deviceType": [
       "phone"
@@ -22,7 +22,8 @@
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "entry"
+      "moduleType": "feature",
+      "installationFree": true
     },
     "abilities": [
       {
@@ -37,7 +38,8 @@
           }
         ],
         "orientation": "unspecified",
-        "name": "com.applibgroup.diffreproject.MainAbility",
+        "visible": true,
+        "name": "io.github.rakshakhegde.diffre.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

@@ -1,4 +1,4 @@
-package com.applibgroup.diffre;
+package io.github.rakshakhegde.diffre;
 
 
 import ohos.agp.components.AttrHelper;

@@ -19,7 +19,7 @@
             ohos:text_size="18fp"
             ohos:padding="8vp"
             />
-        <com.applibgroup.diffre.DiffreViewApi1
+        <io.github.rakshakhegde.diffre.DiffreViewApi1
             ohos:id="$+id:fillShapeViewApi1"
             ohos:height="match_parent"
             ohos:width="match_parent"
