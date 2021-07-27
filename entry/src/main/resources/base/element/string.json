@@ -2,15 +2,11 @@
   "string": [
     {
       "name": "app_name",
-      "value": "DiffreProject"
+      "value": "Diffre"
     },
     {
       "name": "mainability_description",
-      "value": "Java_Phone_Empty Feature Ability"
-    },
-    {
-      "name": "mainability_HelloWorld",
-      "value": "Hello World"
+      "value": "Sample App Entry Feature Ability"
     },
     {
       "name": "api_1",

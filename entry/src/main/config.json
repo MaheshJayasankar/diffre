@@ -22,8 +22,7 @@
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
-      "moduleType": "feature",
-      "installationFree": true
+      "moduleType": "entry"
     },
     "abilities": [
       {
@@ -38,7 +37,6 @@
           }
         ],
         "orientation": "unspecified",
-        "visible": true,
         "name": "io.github.rakshakhegde.diffre.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
