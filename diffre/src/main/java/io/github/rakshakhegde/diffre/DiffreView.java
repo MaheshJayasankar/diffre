@@ -40,8 +40,11 @@ public abstract class DiffreView extends Component implements Component.Estimate
     private static final int PAINT_TEXT_PADDING = 18;
     private static final int PAINT_RADIUS = 10;
 
+    // Display parameters in px
+    public static final float STROKE_WIDTH = 4f;
+
     // Display Color
-    private static final int COLOR_ORANGE = 0xFFFD9727;
+    private static final int DISPLAY_COLOR = 0xFFFD9727;
 
     // Display Text
     private static final String TEXT_STRING = "16:00 – 16:30";
@@ -114,7 +117,7 @@ public abstract class DiffreView extends Component implements Component.Estimate
         paint.setAntiAlias(true);
         paint.setTextAlign(TextAlignment.CENTER);
 
-        paint.setStrokeWidth(4f);
+        paint.setStrokeWidth(STROKE_WIDTH);
     }
 
     @Override
@@ -144,7 +147,7 @@ public abstract class DiffreView extends Component implements Component.Estimate
     @Override
     public void onDraw(Component component, Canvas canvas) {
 
-        paint.setColor(new Color(COLOR_ORANGE));
+        paint.setColor(new Color(DISPLAY_COLOR));
         paint.setStyle(Paint.Style.STROKE_STYLE);
 
         canvas.drawPath(progressStrokePath, paint);
