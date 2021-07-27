@@ -15,7 +15,7 @@
             ohos:width="match_parent"
             ohos:height="match_content"
             ohos:text_alignment="horizontal_center"
-            ohos:text="$string:api_1"
+            ohos:text="$string:progress_text_bar"
             ohos:text_size="18fp"
             ohos:padding="8vp"
             />
