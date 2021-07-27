@@ -13,7 +13,7 @@ https://github.com/rakshakhegde/Diffre
 * A progress bar overlaid on a text display which dynamically changes the colour of the text as the progress indicator changes.
 * A complete and easily extensible implementation using `Region` API of HarmonyOS.
 
-(Required screenshot + GIF of working)
+<img alt="Diffre Sample GIF" src="images/diffre_sample_gif.gif" width = 300/>
 
 ## Dependency
 1. For using Diffre module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
@@ -51,11 +51,11 @@ To further customize this Component, refer to [DiffreView.java](diffre/src/main/
 * `PAINT_TEXT_SIZE`: Size of the display text in fp
 * `PAINT_TEXT_PADDING`: Padding of the display text from the enclosing box in vp
 * `PAINT_RADIUS`: Radius of the bounding rectangular box in vp
-* `STROKE_WIDTH`: Thickness of the stroke used to display the text in px
+* `STROKE_WIDTH`: Thickness of the stroke used to display the text and bounding box in px
 * `DISPLAY_COLOR`: Integer value of the Color used to display background and text. Use `Color.getIntColor(String)` to convert a String representation of color to the integer representation.
 
 ## Future Work
-* As of SDK version 5, the `Path`-based implementation in the original library is not available. This means the given implementation is without the associated anti-aliasing feature. When a suitable approach is made available through future releases of the HarmonyOS API, this feature will be added.
+* As of SDK version 5, the `Path`-based implementation in the original library is not included. This means the given implementation is without the associated anti-aliasing feature. When a suitable provisions for the same are made available in future releases of the HarmonyOS API, this feature will be added.
 
 License
 -------
