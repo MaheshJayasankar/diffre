@@ -15,10 +15,7 @@ import ohos.app.Context;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Works with any background.
- * <p>Heavily inspired from Romain Guy's Medium article on "How to underline text":
- * https://medium.com/google-developers/a-better-underline-for-android-90ba3a2e4fb#.hnv0zcm2h
- * </p>
+ * Works with any background. Also refer to concrete implementation {@link DiffreViewApi1}
  */
 public abstract class DiffreView extends Component implements Component.EstimateSizeListener, Component.DrawTask {
 
